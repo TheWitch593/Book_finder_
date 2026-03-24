@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏮 Jade Pavilion · Chinese Novel Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas petals -->
+  <canvas class="petal-canvas" id="petalCanvas" aria-hidden="true"></canvas>
+  <!-- Animated background -->
+  <div class="bg-layer" aria-hidden="true"></div>
+  <!-- Swinging lanterns -->
+  <div class="lantern-row" id="lanternRow" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <!-- ══ HEADER ══ -->
+    <header class="site-header">
+      <div class="deco-row">
+        <span class="deco-char">云</span>
+        <span class="deco-seg"></span>
+        <span class="deco-char">❀</span>
+        <span class="deco-seg"></span>
+        <span class="deco-char">云</span>
+      </div>
+
+      <p class="eyebrow">English Translations · 中文小说 · Light Novels</p>
+
+      <h1 class="site-title">
+        <span class="hanzi">玉</span>
+        Jade Pavilion
+        <span class="hanzi">阁</span>
+      </h1>
+
+      <p class="tagline"><em>Discover Chinese &amp; Translated Novels in English</em></p>
+
+      <div class="deco-row lotus-row">
+        <span class="deco-long"></span>
+        <span class="lotus-label">✿ 书香万里 ✿</span>
+        <span class="deco-long"></span>
+      </div>
+
+      <p class="api-note">Powered by <strong>WLNUpdates</strong> — the translated novel database</p>
+    </header>
+
+    <!-- ══ SEARCH ══ -->
+    <section class="search-section">
+      <div class="search-wrap" role="search">
+        <span class="s-icon" aria-hidden="true">🔍</span>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search title, author…"
+          autocomplete="off"
+          aria-label="Search novels"
+        />
+        <button id="searchBtn">Search 搜</button>
+      </div>
+
+      <div class="sort-row">
+        <span class="sort-label">Sort:</span>
+        <select id="sortSelect" aria-label="Sort order">
+          <option value="update">🔔 Latest Update</option>
+          <option value="rating">⭐ Top Rated</option>
+          <option value="views">👁 Most Read</option>
+          <option value="chapter-count">📖 Most Chapters</option>
+        </select>
+      </div>
+
+      <div class="chips" id="chipsEl" role="list">
+        <button class="chip active" data-tag="">✦ All</button>
+        <button class="chip" data-tag="wuxia">⚔️ Wuxia</button>
+        <button class="chip" data-tag="xianxia">🐉 Xianxia</button>
+        <button class="chip" data-tag="xuanhuan">🌌 Xuanhuan</button>
+        <button class="chip" data-tag="romance">🌸 Romance</button>
+        <button class="chip" data-tag="historical">🏯 Historical</button>
+        <button class="chip" data-tag="comedy">😄 Comedy</button>
+        <button class="chip" data-tag="mystery">🔮 Mystery</button>
+        <button class="chip" data-tag="school-life">🏫 School Life</button>
+        <button class="chip" data-tag="action">🔥 Action</button>
+        <button class="chip" data-tag="drama">🎭 Drama</button>
+      </div>
+    </section>
+
+    <!-- ══ STATUS ══ -->
+    <p class="status-bar" id="statusBar" aria-live="polite"></p>
+
+    <!-- ══ RESULTS ══ -->
+    <main class="grid" id="resultsGrid"></main>
+
+    <!-- ══ PAGINATION ══ -->
+    <nav class="pagination" id="pagination"></nav>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="f-hanzi">書</span>
+        <p>🏮 Jade Pavilion &nbsp;·&nbsp; Data from
+          <a href="https://www.wlnupdates.com" target="_blank" rel="noopener">WLNUpdates.com</a>
+          &nbsp;·&nbsp; 书香万里 🏮
+        </p>
+        <span class="f-hanzi">阁</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══ MODAL ══ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-inner" id="modalInner"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
