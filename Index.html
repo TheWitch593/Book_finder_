@@ -2,121 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🏮 Jade Pavilion · Chinese Novel Finder</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bibliotheca - Book Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Motor de cautare pentru carti vechi: un instrument simplu pentru pasionatii de carti, folosind API-ul Open Library -->
+  <header>
+    <div class="header-ornament">✦ &nbsp; Antiquarian Book Finder &nbsp; ✦</div>
+    <h1>Bibliotheca</h1>
+    <p class="subtitle">— seek what lies between the leaves —</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">⚜</div>
+      <div class="divider-line"></div>
+    </div>
+  </header>
 
-  <!-- Canvas petals -->
-  <canvas class="petal-canvas" id="petalCanvas" aria-hidden="true"></canvas>
-  <!-- Animated background -->
-  <div class="bg-layer" aria-hidden="true"></div>
-  <!-- Swinging lanterns -->
-  <div class="lantern-row" id="lanternRow" aria-hidden="true"></div>
-
-  <div class="page">
-
-    <!-- ══ HEADER ══ -->
-    <header class="site-header">
-      <div class="deco-row">
-        <span class="deco-char">云</span>
-        <span class="deco-seg"></span>
-        <span class="deco-char">❀</span>
-        <span class="deco-seg"></span>
-        <span class="deco-char">云</span>
-      </div>
-
-      <p class="eyebrow">English Translations · 中文小说 · Light Novels</p>
-
-      <h1 class="site-title">
-        <span class="hanzi">玉</span>
-        Jade Pavilion
-        <span class="hanzi">阁</span>
-      </h1>
-
-      <p class="tagline"><em>Discover Chinese &amp; Translated Novels in English</em></p>
-
-      <div class="deco-row lotus-row">
-        <span class="deco-long"></span>
-        <span class="lotus-label">✿ 书香万里 ✿</span>
-        <span class="deco-long"></span>
-      </div>
-
-      <p class="api-note">Powered by <strong>WLNUpdates</strong> — the translated novel database</p>
-    </header>
-
-    <!-- ══ SEARCH ══ -->
-    <section class="search-section">
-      <div class="search-wrap" role="search">
-        <span class="s-icon" aria-hidden="true">🔍</span>
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search title, author…"
-          autocomplete="off"
-          aria-label="Search novels"
-        />
-        <button id="searchBtn">Search 搜</button>
-      </div>
-
-      <div class="sort-row">
-        <span class="sort-label">Sort:</span>
-        <select id="sortSelect" aria-label="Sort order">
-          <option value="update">🔔 Latest Update</option>
-          <option value="rating">⭐ Top Rated</option>
-          <option value="views">👁 Most Read</option>
-          <option value="chapter-count">📖 Most Chapters</option>
-        </select>
-      </div>
-
-      <div class="chips" id="chipsEl" role="list">
-        <button class="chip active" data-tag="">✦ All</button>
-        <button class="chip" data-tag="wuxia">⚔️ Wuxia</button>
-        <button class="chip" data-tag="xianxia">🐉 Xianxia</button>
-        <button class="chip" data-tag="xuanhuan">🌌 Xuanhuan</button>
-        <button class="chip" data-tag="romance">🌸 Romance</button>
-        <button class="chip" data-tag="historical">🏯 Historical</button>
-        <button class="chip" data-tag="comedy">😄 Comedy</button>
-        <button class="chip" data-tag="mystery">🔮 Mystery</button>
-        <button class="chip" data-tag="school-life">🏫 School Life</button>
-        <button class="chip" data-tag="action">🔥 Action</button>
-        <button class="chip" data-tag="drama">🎭 Drama</button>
-      </div>
-    </section>
-
-    <!-- ══ STATUS ══ -->
-    <p class="status-bar" id="statusBar" aria-live="polite"></p>
-
-    <!-- ══ RESULTS ══ -->
-    <main class="grid" id="resultsGrid"></main>
-
-    <!-- ══ PAGINATION ══ -->
-    <nav class="pagination" id="pagination"></nav>
-
-    <!-- ══ FOOTER ══ -->
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <span class="f-hanzi">書</span>
-        <p>🏮 Jade Pavilion &nbsp;·&nbsp; Data from
-          <a href="https://www.wlnupdates.com" target="_blank" rel="noopener">WLNUpdates.com</a>
-          &nbsp;·&nbsp; 书香万里 🏮
-        </p>
-        <span class="f-hanzi">阁</span>
-      </div>
-    </footer>
-  </div>
-
-  <!-- ══ MODAL ══ -->
-  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" tabindex="-1">
-    <div class="modal-box" id="modalBox">
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-      <div class="modal-inner" id="modalInner"></div>
+  <div class="search-section">
+    <div class="search-wrapper">
+      <div class="search-icon">⊕</div>
+      <input type="text" id="search-input" placeholder="Search titles, authors, subjects…" autocomplete="off" />
+      <button id="search-btn">Search</button>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="title">By Title</button>
+      <button class="filter-btn" data-type="author">By Author</button>
+      <button class="filter-btn" data-type="subject">By Subject</button>
     </div>
   </div>
+
+  <div id="results-section">
+
+    <div id="loading">
+      <span class="candle">🕯</span>
+      <p class="loading-text">Consulting the archives…</p>
+    </div>
+
+    <div id="empty-state">
+      <span class="empty-icon">📖</span>
+      <p class="empty-text">No volumes unearthed</p>
+      <p class="empty-sub">Perhaps try a different incantation</p>
+    </div>
+
+    <div id="results-header-wrap" style="display:none">
+      <div class="results-header">
+        <div class="results-count" id="results-count"></div>
+      </div>
+    </div>
+
+    <div id="books-grid"></div>
+    <div id="pagination"></div>
+
+  </div>
+
+  <!-- Fereastra modala -->
+  <div id="modal-overlay">
+    <div id="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Powered by <a href="https://openlibrary.org" target="_blank">Open Library</a> &nbsp;·&nbsp; Knowledge endures</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
