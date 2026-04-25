@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bibliotheca - Book Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Motor de cautare pentru carti vechi: un instrument simplu pentru pasionatii de carti, folosind API-ul Open Library -->
+  <header>
+    <div class="header-ornament">✦ &nbsp; Antiquarian Book Finder &nbsp; ✦</div>
+    <h1>Bibliotheca</h1>
+    <p class="subtitle">— seek what lies between the leaves —</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">⚜</div>
+      <div class="divider-line"></div>
+    </div>
+  </header>
+
+  <div class="search-section">
+    <div class="search-wrapper">
+      <div class="search-icon">⊕</div>
+      <input type="text" id="search-input" placeholder="Search titles, authors, subjects…" autocomplete="off" />
+      <button id="search-btn">Search</button>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="title">By Title</button>
+      <button class="filter-btn" data-type="author">By Author</button>
+      <button class="filter-btn" data-type="subject">By Subject</button>
+    </div>
+  </div>
+
+  <div id="results-section">
+
+    <div id="loading">
+      <span class="candle">🕯</span>
+      <p class="loading-text">Consulting the archives…</p>
+    </div>
+
+    <div id="empty-state">
+      <span class="empty-icon">📖</span>
+      <p class="empty-text">No volumes unearthed</p>
+      <p class="empty-sub">Perhaps try a different incantation</p>
+    </div>
+
+    <div id="results-header-wrap" style="display:none">
+      <div class="results-header">
+        <div class="results-count" id="results-count"></div>
+      </div>
+    </div>
+
+    <div id="books-grid"></div>
+    <div id="pagination"></div>
+
+  </div>
+
+  <!-- Fereastra modala -->
+  <div id="modal-overlay">
+    <div id="modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Powered by <a href="https://openlibrary.org" target="_blank">Open Library</a> &nbsp;·&nbsp; Knowledge endures</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
